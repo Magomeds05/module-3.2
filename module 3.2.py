@@ -1,16 +1,15 @@
 def send_email(message, recipient,*, sender="university.help@gmail.com"):
-    must = (".com"".ru"".net")
-    for i in recipient, sender:
-        if must not in i:
-            print("Невозможно отправить письмо с адреса", sender, "на адрес", recipient)
-        if sender == recipient:
-            print("Нельзя отправить письмо самому себе!")
-            return must
-        if sender == "university.help@gmail.com":
-            print("Письмо успешно отправлено с адреса", sender, "на адрес", recipient)
-        if sender != "university.help@gmail.com":
-            print("НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса", sender, "на адрес", recipient)
-            return must
+    if '@' not in recipient or not recipient.endswith(('.ru','.net','.com')):
+        print("Невозможно отправить письмо с адреса", sender, "на адрес", recipient)
+    if '@' not in sender or not sender.endswith(('.ru','.net','.com')):
+        print("Невозможно отправить письмо с адреса", sender, "на адрес", recipient)
+    elif sender == recipient:
+        print("Нельзя отправить письмо самому себе!")
+    elif sender == "university.help@gmail.com":
+        print("Письмо успешно отправлено с адреса", sender, "на адрес", recipient)
+    else:
+        print("НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса", sender, "на адрес", recipient)
+
 
 
 send_email("Это сообщение для проверки связи", "vasyok1337@gmail.com", sender="university.help@gmail.com")
